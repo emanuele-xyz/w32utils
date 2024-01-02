@@ -84,10 +84,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\w32utils.h" />
+    <ClInclude Include="include\w32u.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\example.c" />
+    <ClCompile Include="src\w32u.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
