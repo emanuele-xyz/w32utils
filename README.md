@@ -1,1 +1,1 @@
-# w32utils
+# Win32 Utility Library
