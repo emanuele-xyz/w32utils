@@ -24,4 +24,4 @@ typedef struct w32u_logger
 	w32u_log_lvl level;
 } w32u_logger;
 
-void w32u_log(w32u_logger logger, w32u_log_lvl level, int msg_len, const char* msg);
+void w32u_log(w32u_logger logger, w32u_log_lvl level, const char* msg);
