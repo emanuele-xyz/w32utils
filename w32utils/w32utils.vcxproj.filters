@@ -18,12 +18,21 @@
     <ClInclude Include="include\w32u.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\w32u_windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\w32u_log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="examples\w32u_log_example.c">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\example.c">
+    <ClCompile Include="src\w32u_log.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\w32u.c">
+    <ClCompile Include="examples\main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

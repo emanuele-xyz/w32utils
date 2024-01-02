@@ -365,3 +365,6 @@ FodyWeavers.xsd
 # Custom build folders
 bin
 bin-tmp
+
+# File generated from w32u_log_example function
+log.txt

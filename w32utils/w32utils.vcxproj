@@ -84,11 +84,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="examples\w32u_log_example.c" />
     <ClInclude Include="include\w32u.h" />
+    <ClInclude Include="include\w32u_log.h" />
+    <ClInclude Include="include\w32u_windows.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\example.c" />
-    <ClCompile Include="src\w32u.c" />
+    <ClCompile Include="examples\main.c" />
+    <ClCompile Include="src\w32u_log.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
