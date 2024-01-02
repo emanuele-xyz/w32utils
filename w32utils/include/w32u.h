@@ -21,7 +21,7 @@ typedef struct w32u_logger
 	HANDLE stdout;
 	HANDLE stderr;
 	BOOL debug;
-	w32u_log_lvl level;
+	int level;
 } w32u_logger;
 
 void w32u_log(w32u_logger logger, w32u_log_lvl level, const char* msg);
