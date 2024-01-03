@@ -22,14 +22,14 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -87,11 +87,13 @@
     <ClInclude Include="examples\w32u_log_example.c" />
     <ClInclude Include="include\w32u.h" />
     <ClInclude Include="include\w32u_log.h" />
+    <ClInclude Include="include\w32u_window.h" />
     <ClInclude Include="include\w32u_windows.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="examples\main.c" />
     <ClCompile Include="src\w32u_log.c" />
+    <ClCompile Include="src\w32u_window.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
