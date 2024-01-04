@@ -84,7 +84,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="examples\w32u_log_example.c" />
     <ClInclude Include="include\w32u.h" />
     <ClInclude Include="include\w32u_log.h" />
     <ClInclude Include="include\w32u_window.h" />

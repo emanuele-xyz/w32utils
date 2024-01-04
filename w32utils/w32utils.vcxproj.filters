@@ -24,9 +24,6 @@
     <ClInclude Include="include\w32u_log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="examples\w32u_log_example.c">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\w32u_window.h">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -1,6 +1,14 @@
 #include <w32u_window.h>
 
 /*
+	Show error popup window and wait for it to be closed.
+*/
+void w32u_show_error_popup(const char* msg)
+{
+	MessageBoxA(0, msg, 0, MB_OK | MB_ICONERROR);
+}
+
+/*
 	Force newly created windows to be DPI aware.
 	The return value tells whether ot not the function succeeded.
 */
