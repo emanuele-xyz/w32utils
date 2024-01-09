@@ -32,6 +32,12 @@ static LRESULT w32u_window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpara
 		w32u_create_window_create_params* create_params = create->lpCreateParams;
 		SetWindowLongPtrA(hwnd, GWLP_USERDATA, (LONG_PTR)create_params->msg_buf);
 		SetWindowLongPtrA(hwnd, GWLP_WNDPROC, (LONG_PTR)create_params->window_proc);
+		/* 
+		*  NOTE: From https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowlongptra#remarks
+		*  Certain window data is cached, so changes you make using SetWindowLongPtr will not take effect until you call the SetWindowPos function.
+		*  I'm not sure which data is cached.
+		*/
+		SetWindowPos(hwnd, 0, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
 		result = create_params->window_proc(hwnd, msg, wparam, lparam);
 	}
 	else
