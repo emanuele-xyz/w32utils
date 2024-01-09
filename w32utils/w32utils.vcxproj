@@ -85,12 +85,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\w32u.h" />
+    <ClInclude Include="include\w32u_input_state.h" />
     <ClInclude Include="include\w32u_log.h" />
     <ClInclude Include="include\w32u_window.h" />
     <ClInclude Include="include\w32u_windows.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="examples\main.c" />
+    <ClCompile Include="src\w32u_input_state.c" />
     <ClCompile Include="src\w32u_log.c" />
     <ClCompile Include="src\w32u_window.c" />
   </ItemGroup>
