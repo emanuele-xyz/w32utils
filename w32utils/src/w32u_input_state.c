@@ -6,7 +6,6 @@ void w32u_update_input(w32u_input_state* input, w32u_msg* buf, int buf_size)
 	{
 		switch (buf[i].msg)
 		{
-			// TODO: check for correctness
 		case WM_MOUSEWHEEL: { input->mouse.wheel = GET_WHEEL_DELTA_WPARAM(buf[i].wparam); } break;
 		case WM_MOUSEMOVE: { input->mouse.x = GET_X_LPARAM(buf[i].lparam); input->mouse.y = GET_Y_LPARAM(buf[i].lparam); } break;
 		case WM_LBUTTONDOWN:
