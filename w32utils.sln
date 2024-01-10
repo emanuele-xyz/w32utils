@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34302.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32utils", "w32utils\w32utils.vcxproj", "{802654B3-CB9E-46A4-96F0-728A0DDF8299}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32u_log_example", "w32u_log_example\w32u_log_example.vcxproj", "{D12DBC93-A777-4BDC-A26D-60AB9631A283}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{802654B3-CB9E-46A4-96F0-728A0DDF8299}.Debug|x64.Build.0 = Debug|x64
 		{802654B3-CB9E-46A4-96F0-728A0DDF8299}.Release|x64.ActiveCfg = Release|x64
 		{802654B3-CB9E-46A4-96F0-728A0DDF8299}.Release|x64.Build.0 = Release|x64
+		{D12DBC93-A777-4BDC-A26D-60AB9631A283}.Debug|x64.ActiveCfg = Debug|x64
+		{D12DBC93-A777-4BDC-A26D-60AB9631A283}.Debug|x64.Build.0 = Debug|x64
+		{D12DBC93-A777-4BDC-A26D-60AB9631A283}.Release|x64.ActiveCfg = Release|x64
+		{D12DBC93-A777-4BDC-A26D-60AB9631A283}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
