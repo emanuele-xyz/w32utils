@@ -54,7 +54,7 @@ void w32u_window_example(void)
 
 	w32u_msg_buf window_msg_buf = { 0 };
 	window_msg_buf.capacity = 256;
-	window_msg_buf.buf = calloc(window_msg_buf.capacity, sizeof(*window_msg_buf.buf));
+	window_msg_buf.buf = calloc(window_msg_buf.capacity, sizeof(w32u_msg));
 	HWND window = w32u_create_window(class_name, "Window", 1280, 720, WS_OVERLAPPEDWINDOW, &window_msg_buf, window_proc);
 	if (!window) w32u_show_error_popup("Failed create window");
 
