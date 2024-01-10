@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32utils", "w32utils\w32uti
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32u_log_example", "w32u_log_example\w32u_log_example.vcxproj", "{D12DBC93-A777-4BDC-A26D-60AB9631A283}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32u_window_example", "w32u_window_example\w32u_window_example.vcxproj", "{3C8B4B5A-4756-4538-B944-F308C5EDA6D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{D12DBC93-A777-4BDC-A26D-60AB9631A283}.Debug|x64.Build.0 = Debug|x64
 		{D12DBC93-A777-4BDC-A26D-60AB9631A283}.Release|x64.ActiveCfg = Release|x64
 		{D12DBC93-A777-4BDC-A26D-60AB9631A283}.Release|x64.Build.0 = Release|x64
+		{3C8B4B5A-4756-4538-B944-F308C5EDA6D5}.Debug|x64.ActiveCfg = Debug|x64
+		{3C8B4B5A-4756-4538-B944-F308C5EDA6D5}.Debug|x64.Build.0 = Debug|x64
+		{3C8B4B5A-4756-4538-B944-F308C5EDA6D5}.Release|x64.ActiveCfg = Release|x64
+		{3C8B4B5A-4756-4538-B944-F308C5EDA6D5}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
