@@ -15,30 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\w32u.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\w32u_windows.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\w32u_log.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\w32u_window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\w32u_input_state.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\w32u_log.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\w32u_window.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\w32u_input_state.c">
+    <ClCompile Include="w32u_input_state_example.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

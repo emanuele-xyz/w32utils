@@ -8,6 +8,7 @@ void w32u_show_error_popup(const char* msg)
 BOOL w32u_make_dpi_aware(void)
 {
 	/*
+		NOTE:
 		On Windows, if you go on Display Settings, you can change the display's scale.
 		From what I understand, this changes the display's DPI.
 		This messes up things such as window dimensions and coordinates.
