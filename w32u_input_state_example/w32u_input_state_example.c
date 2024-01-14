@@ -45,7 +45,10 @@ int main(void)
 
     /*
         NOTE:
-        TODO: explain why two input states
+        We keep track of the previous and the current input states.
+        I tend to use this approach, instead of relying directly on the OS, because:
+        - It lets me keep track of multiple input states at once.
+        - It lets me generate custom input events.
     */
     w32u_input_state input_buf[2] = { 0 };
     int input_idx = 0;
