@@ -55,3 +55,9 @@ void w32u_push_msg(w32u_msg_buf* msg_buf, w32u_msg msg);
 
 // Clear message buffer
 void w32u_clear_msg_buf(w32u_msg_buf* msg_buf);
+
+// TODO: add doc
+void w32u_change_window_style(HWND hwnd, UINT style);
+
+// TODO: add doc
+void w32u_change_window_size(HWND hwnd, int w, int h);

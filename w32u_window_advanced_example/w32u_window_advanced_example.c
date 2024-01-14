@@ -93,7 +93,10 @@ int main(void)
             int is_pressed = input_buf[curr_input(input_idx)].keyboard.key['F'];
             if (!was_pressed && is_pressed)
             {
-                w32u_trace(logger, "Toggle style ...");
+                is_windowed = !is_windowed;
+                w32u_change_window_style(window, is_windowed ? WS_OVERLAPPEDWINDOW : WS_POPUPWINDOW); // TODO: test
+                
+                w32u_trace(logger, "F pressed ...");
             }
         }
 
@@ -103,7 +106,18 @@ int main(void)
             int is_pressed = input_buf[curr_input(input_idx)].keyboard.key['R'];
             if (!was_pressed && is_pressed)
             {
-                w32u_trace(logger, "Change resolution ...");
+                window_res_idx = (window_res_idx + 1) % window_res_count;
+                int w = window_res_wh[window_res_idx][0];
+                int h = window_res_wh[window_res_idx][1];
+                w32u_change_window_size(window, w, h); // TODO: test
+                RECT client_rect = { 0 };
+                GetClientRect(window, &client_rect);
+                RECT window_rect = { 0 };
+                GetWindowRect(window, &window_rect);
+                if (client_rect.right != w) __debugbreak();
+                if (client_rect.bottom != h) __debugbreak();
+
+                w32u_trace(logger, "R pressed ...");
             }
         }
     }
