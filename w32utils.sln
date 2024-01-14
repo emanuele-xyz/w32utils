@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32u_window_example", "w32u
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32u_input_state_example", "w32u_input_state_example\w32u_input_state_example.vcxproj", "{5DDC0061-F2FA-4E22-BCFE-301DE59F3871}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w32u_window_advanced_example", "w32u_window_advanced_example\w32u_window_advanced_example.vcxproj", "{3464FD99-B7D8-45E1-822E-78E5673CC101}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,6 +35,10 @@ Global
 		{5DDC0061-F2FA-4E22-BCFE-301DE59F3871}.Debug|x64.Build.0 = Debug|x64
 		{5DDC0061-F2FA-4E22-BCFE-301DE59F3871}.Release|x64.ActiveCfg = Release|x64
 		{5DDC0061-F2FA-4E22-BCFE-301DE59F3871}.Release|x64.Build.0 = Release|x64
+		{3464FD99-B7D8-45E1-822E-78E5673CC101}.Debug|x64.ActiveCfg = Debug|x64
+		{3464FD99-B7D8-45E1-822E-78E5673CC101}.Debug|x64.Build.0 = Debug|x64
+		{3464FD99-B7D8-45E1-822E-78E5673CC101}.Release|x64.ActiveCfg = Release|x64
+		{3464FD99-B7D8-45E1-822E-78E5673CC101}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
