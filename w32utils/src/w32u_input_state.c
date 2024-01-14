@@ -14,8 +14,8 @@ void w32u_update_input(w32u_input_state* input, w32u_msg* buf, int buf_size)
 		case WM_MBUTTONUP: { input->mouse.mbutton = (buf[i].msg == WM_MBUTTONDOWN); } break;
 		case WM_RBUTTONDOWN:
 		case WM_RBUTTONUP: { input->mouse.rbutton = (buf[i].msg == WM_RBUTTONDOWN); } break;
-		case WM_KEYUP:
-		case WM_KEYDOWN: { input->keyboard.key[buf[i].wparam] = (buf[i].msg == WM_KEYDOWN); } break;
+		case WM_KEYDOWN:
+		case WM_KEYUP: { input->keyboard.key[buf[i].wparam] = (buf[i].msg == WM_KEYDOWN); } break;
 		}
 	}
 }
