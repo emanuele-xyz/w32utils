@@ -4,7 +4,7 @@ LRESULT window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
     w32u_msg_buf* msg_buf = (w32u_msg_buf*)GetWindowLongPtrA(hwnd, GWLP_USERDATA);
     w32u_push_msg(msg_buf, (w32u_msg) { hwnd, msg, wparam, lparam });
-
+    
     LRESULT result = 0;
     if (msg == WM_CLOSE)
     {
@@ -45,12 +45,12 @@ int main(void)
     int window_res_wh[][2] = { {1280, 720}, {1920, 1080}, {2560, 1440} };
     int window_res_count = sizeof(window_res_wh) / sizeof(*window_res_wh);
     HWND window = w32u_create_window(
-        class_name, 
-        "Window", 
-        window_res_wh[window_res_idx][0], 
-        window_res_wh[window_res_idx][1], 
-        is_windowed ? WS_OVERLAPPEDWINDOW : WS_POPUPWINDOW,
-        &window_msg_buf, 
+        class_name,
+        "Window",
+        window_res_wh[window_res_idx][0],
+        window_res_wh[window_res_idx][1],
+        is_windowed ? WS_CAPTION | WS_SYSMENU : WS_POPUP,
+        &window_msg_buf,
         window_proc
     );
     if (!window) w32u_show_error_popup("Failed create window");
@@ -58,9 +58,35 @@ int main(void)
     w32u_input_state input_buf[2] = { 0 };
     int input_idx = 0;
 
+    int should_destroy_window = 0;
     int is_running = 1;
     while (is_running)
     {
+        if (should_destroy_window)
+        {
+            should_destroy_window = 0;
+            BOOL res = DestroyWindow(window);
+            DWORD err = 0;
+            if (!res)
+            {
+                err = GetLastError();
+            }
+            window = w32u_create_window(
+                class_name,
+                "Window",
+                window_res_wh[window_res_idx][0],
+                window_res_wh[window_res_idx][1],
+                is_windowed ? WS_CAPTION | WS_SYSMENU : WS_POPUP,
+                &window_msg_buf,
+                window_proc
+            );
+            if (!window)
+            {
+                w32u_show_error_popup("Failed create window");
+                is_running = 0;
+            }
+        }
+
         w32u_clear_msg_buf(&window_msg_buf);
 
         input_idx = next_input(input_idx);
@@ -83,6 +109,10 @@ int main(void)
             {
                 is_running = 0;
             }
+            else if (msg.msg == WM_DESTROY)
+            {
+                w32u_trace(logger, "window KO");
+            }
         }
 
         w32u_update_input(&input_buf[curr_input(input_idx)], window_msg_buf.buf, window_msg_buf.size);
@@ -94,8 +124,8 @@ int main(void)
             if (!was_pressed && is_pressed)
             {
                 is_windowed = !is_windowed;
-                w32u_change_window_style(window, is_windowed ? WS_OVERLAPPEDWINDOW : WS_POPUPWINDOW); // TODO: test
-                
+                should_destroy_window = 1;
+
                 w32u_trace(logger, "F pressed ...");
             }
         }
@@ -107,22 +137,27 @@ int main(void)
             if (!was_pressed && is_pressed)
             {
                 window_res_idx = (window_res_idx + 1) % window_res_count;
-                int w = window_res_wh[window_res_idx][0];
-                int h = window_res_wh[window_res_idx][1];
-                w32u_change_window_size(window, w, h); // TODO: test
-                RECT client_rect = { 0 };
-                GetClientRect(window, &client_rect);
-                RECT window_rect = { 0 };
-                GetWindowRect(window, &window_rect);
-                if (client_rect.right != w) __debugbreak();
-                if (client_rect.bottom != h) __debugbreak();
+                should_destroy_window = 1;
 
                 w32u_trace(logger, "R pressed ...");
             }
         }
+
+        // NOTE: make sure that client area always stays the same
+        {
+            RECT rect = { 0 };
+            BOOL res = GetClientRect(window, &rect);
+            if (!should_destroy_window && res)
+            {
+                int expected_w = window_res_wh[window_res_idx][0];
+                int expected_h = window_res_wh[window_res_idx][1];
+                if (rect.right != expected_w) __debugbreak();
+                if (rect.bottom != expected_h) __debugbreak();
+            }
+        }
     }
 
-    CloseWindow(window);
+    DestroyWindow(window);
     UnregisterClassA(class_name, 0);
     VirtualFree(window_msg_buf.buf, 0, MEM_RELEASE);
 

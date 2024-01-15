@@ -59,7 +59,7 @@ ATOM w32u_register_window_class(const char* class_name)
     wc.hInstance = GetModuleHandleA(0);
     wc.hIcon = LoadIcon(0, IDI_APPLICATION);
     wc.hCursor = LoadCursor(0, IDC_ARROW);
-    //wc.hbrBackground = ;
+    wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
     //wc.lpszMenuName = ;
     wc.lpszClassName = class_name;
     wc.hIconSm = LoadIcon(0, IDI_APPLICATION);
@@ -100,21 +100,4 @@ void w32u_clear_msg_buf(w32u_msg_buf* msg_buf)
     {
         msg_buf->size = 0;
     }
-}
-
-void w32u_change_window_style(HWND hwnd, UINT style)
-{
-    SetWindowLongPtrA(hwnd, GWL_STYLE, style);
-    SetWindowPos(hwnd, 0, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED | SWP_SHOWWINDOW);
-    UpdateWindow(hwnd); // TODO: what?
-}
-
-void w32u_change_window_size(HWND hwnd, int w, int h)
-{
-    RECT client_rect = { .left = 0, .top = 0, .right = w, .bottom = h };
-    AdjustWindowRect(&client_rect, GetWindowLongPtrA(hwnd, GWL_STYLE), FALSE);
-    int window_w = client_rect.right - client_rect.left;
-    int window_h = client_rect.bottom - client_rect.top;
-    SetWindowPos(hwnd, 0, 0, 0, window_w, window_h, /*SWP_NOMOVE |*/ SWP_SHOWWINDOW);
-    UpdateWindow(hwnd); // TODO: what?
 }
