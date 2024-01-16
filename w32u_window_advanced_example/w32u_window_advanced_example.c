@@ -21,8 +21,34 @@ LRESULT window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 #define next_input(idx) (((idx) + 1) % 2)
 #define prev_input(idx) next_input(idx)
 
+typedef struct display_monitor_buf
+{
+    int size;
+    int capacity;
+} display_monitor_buf;
+
+BOOL MonitorEnumProc(HMONITOR hmonitor, HDC hdc, LPRECT rect, LPARAM data)
+{
+    MONITORINFOEXA info = { 0 };
+    info.cbSize = sizeof(info);
+    BOOL res = GetMonitorInfoA(hmonitor, &info);
+    int k = 0;
+}
+
 int main(void)
 {
+    {
+        display_monitor_buf dmb = { 0 };
+        BOOL res = EnumDisplayMonitors(0, 0, MonitorEnumProc, &dmb);
+
+        int displays_count = GetSystemMetrics(SM_CMONITORS);
+        // TODO: maybe use 
+        // this -> https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-enumdisplaydevicesa
+        // and then -> https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-enumdisplaysettingsa
+
+        int kek = 0;
+    }
+
     w32u_logger logger = { 0 };
     logger.file = INVALID_HANDLE_VALUE;
     logger.console_out = INVALID_HANDLE_VALUE;
