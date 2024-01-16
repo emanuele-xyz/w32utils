@@ -4,7 +4,7 @@ LRESULT window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
     w32u_msg_buf* msg_buf = (w32u_msg_buf*)GetWindowLongPtrA(hwnd, GWLP_USERDATA);
     w32u_push_msg(msg_buf, (w32u_msg) { hwnd, msg, wparam, lparam });
-    
+
     LRESULT result = 0;
     if (msg == WM_CLOSE)
     {
@@ -62,6 +62,7 @@ int main(void)
     int is_running = 1;
     while (is_running)
     {
+        // TODO: horrible
         if (should_destroy_window)
         {
             should_destroy_window = 0;

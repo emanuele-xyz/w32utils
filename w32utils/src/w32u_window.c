@@ -70,6 +70,7 @@ HWND w32u_create_window(const char* class_name, const char* title, int w, int h,
 {
     HWND hwnd = 0;
 
+    style = style | WS_VISIBLE;
     RECT rect = { 0, 0, w, h };
     BOOL got_dimensions = AdjustWindowRect(&rect, style, 0);
     if (got_dimensions)
@@ -79,7 +80,7 @@ HWND w32u_create_window(const char* class_name, const char* title, int w, int h,
         w32u_create_window_create_params lparam = { 0 };
         lparam.msg_buf = msg_buf;
         lparam.window_proc = window_proc;
-        hwnd = CreateWindowA(class_name, title, style | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, window_w, window_h, 0, 0, GetModuleHandleA(0), &lparam);
+        hwnd = CreateWindowA(class_name, title, style, CW_USEDEFAULT, CW_USEDEFAULT, window_w, window_h, 0, 0, GetModuleHandleA(0), &lparam);
     }
 
     return hwnd;
