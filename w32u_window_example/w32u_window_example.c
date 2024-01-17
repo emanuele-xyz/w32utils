@@ -70,7 +70,7 @@ int main(void)
         }
     }
 
-    CloseWindow(window);
+    DestroyWindow(window);
     UnregisterClassA(class_name, 0);
     VirtualFree(window_msg_buf.buf, 0, MEM_RELEASE);
 
