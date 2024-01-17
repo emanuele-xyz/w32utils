@@ -38,8 +38,5 @@
     <ClCompile Include="src\w32u_window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\w32u_input_state.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

@@ -48,8 +48,3 @@ typedef struct w32u_input_state
         int key[VK_OEM_CLEAR];
     } keyboard;
 } w32u_input_state;
-
-/*
-    Update input state using the provided message buffer.
-*/
-void w32u_update_input(w32u_input_state* input, w32u_msg* buf, int buf_size);

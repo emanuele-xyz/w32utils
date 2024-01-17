@@ -2,12 +2,13 @@
 
 LRESULT window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
-    w32u_msg_buf* msg_buf = (w32u_msg_buf*)GetWindowLongPtrA(hwnd, GWLP_USERDATA);
-    w32u_push_msg(msg_buf, (w32u_msg) { hwnd, msg, wparam, lparam });
+    int* is_running = (int*)GetWindowLongPtrA(hwnd, GWLP_USERDATA);
 
     LRESULT result = 0;
     if (msg == WM_CLOSE)
     {
+        *is_running = 0;
+
         /* NOTE:
             Passing this message to DefWindowProc would destroy the window.
             We usually don't want this.
@@ -33,18 +34,12 @@ int main(void)
     ATOM class_registered = w32u_register_window_class(class_name);
     if (!class_registered) w32u_show_error_popup("Failed to register window class");
 
-    w32u_msg_buf window_msg_buf = { 0 };
-    window_msg_buf.capacity = 256;
-    window_msg_buf.buf = VirtualAlloc(0, window_msg_buf.capacity * sizeof(w32u_msg), MEM_COMMIT, PAGE_READWRITE);
-    HWND window = w32u_create_window(class_name, "Window", 1280, 720, WS_OVERLAPPEDWINDOW, &window_msg_buf, window_proc);
+    int is_running = 1;
+    HWND window = w32u_create_window(class_name, "Window", 1280, 720, WS_OVERLAPPEDWINDOW, window_proc, &is_running);
     if (!window) w32u_show_error_popup("Failed create window");
 
-    int is_running = 1;
     while (is_running)
     {
-        // NOTE: before starting new frame, we clear the previous window messages.
-        w32u_clear_msg_buf(&window_msg_buf);
-
         /* NOTE:
         *  This loop is called a message pump.
         *  It is used to dispatch pending messages to the window procedure.
@@ -58,21 +53,10 @@ int main(void)
                 DispatchMessageA(&msg);
             }
         }
-
-        // NOTE: handle messages inside the message buffer
-        for (int i = 0; i < window_msg_buf.size; i++)
-        {
-            w32u_msg msg = window_msg_buf.buf[i];
-            if (msg.msg == WM_CLOSE)
-            {
-                is_running = 0;
-            }
-        }
     }
 
     DestroyWindow(window);
     UnregisterClassA(class_name, 0);
-    VirtualFree(window_msg_buf.buf, 0, MEM_RELEASE);
 
     return 0;
 }
