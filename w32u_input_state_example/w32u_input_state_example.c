@@ -125,15 +125,6 @@ int main(void)
                 w32u_trace(logger, "Just pressed T ...");
             }
         }
-
-        {
-            int was_pressed = input_buf[prev_input(input_idx)].keyboard.key['R'];
-            int is_pressed = input_buf[curr_input(input_idx)].keyboard.key['R'];
-            if (!was_pressed && is_pressed)
-            {
-                w32u_trace(logger, "Just pressed R ...");
-            }
-        }
     }
 
     DestroyWindow(window);
