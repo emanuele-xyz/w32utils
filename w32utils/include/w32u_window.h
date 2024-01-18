@@ -2,15 +2,6 @@
 
 #include <w32u_windows.h>
 
-// Window message
-typedef struct w32u_msg
-{
-    HWND hwnd;
-    UINT msg;
-    WPARAM wparam;
-    LPARAM lparam;
-} w32u_msg;
-
 /*
     Show error popup window and wait for it to be closed.
 */
