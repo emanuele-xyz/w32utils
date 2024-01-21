@@ -22,4 +22,4 @@
 #define w32u_assert_hr(hr) w32u_assert(SUCCEEDED(hr))
 
 #define w32u_check(call) do { int res = (call); if (!res) { w32u_break(#call " failed"); } } while (0)
-#define w32u_check_hr(call) do { HRESULT res = (call); if (!res) { w32u_break(#call " failed"); } } while (0)
+#define w32u_check_hr(call) do { HRESULT hr = (call); if (!SUCCEEDED(hr)) { w32u_break(#call " failed"); } } while (0)
