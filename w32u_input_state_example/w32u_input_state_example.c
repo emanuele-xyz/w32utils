@@ -79,21 +79,19 @@ int main(void)
     */
     w32u_input_state input_buf[2] = { 0 };
     int input_idx = 0;
-
-    BOOL is_dpi_aware = w32u_make_dpi_aware();
-    w32u_assert(is_dpi_aware);
+    
+    w32u_check(w32u_make_dpi_aware());
 
     const char* class_name = "my_window_class_name";
-    ATOM class_registered = w32u_register_window_class(class_name);
-    w32u_assert(class_registered);
+    w32u_check(w32u_register_window_class(class_name));
 
     int is_running = 1;
     window_data window_data = { 0 };
     window_data.is_running = &is_running;
     window_data.input_state = &input_buf[curr_input(input_idx)];
 
-    HWND window = w32u_create_window(class_name, "Window", 1280, 720, WS_OVERLAPPEDWINDOW, window_proc, &window_data);
-    w32u_assert(window);
+    HWND window = 0;
+    w32u_check(w32u_create_window(class_name, "Window", 1280, 720, WS_OVERLAPPEDWINDOW, window_proc, &window_data, &window));
 
     while (is_running)
     {

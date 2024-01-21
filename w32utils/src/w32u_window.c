@@ -66,10 +66,9 @@ ATOM w32u_register_window_class(const char* class_name)
     return RegisterClassExA(&wc);
 }
 
-HWND w32u_create_window(const char* class_name, const char* title, int w, int h, DWORD style, WNDPROC window_proc, void* user_data)
+int w32u_create_window(const char* class_name, const char* title, int w, int h, DWORD style, WNDPROC window_proc, void* user_data, HWND* out_hwnd)
 {
-    HWND hwnd = 0;
-
+    int result = 1;
     style = style | WS_VISIBLE;
     RECT rect = { 0, 0, w, h };
     BOOL got_dimensions = AdjustWindowRect(&rect, style, 0);
@@ -80,8 +79,9 @@ HWND w32u_create_window(const char* class_name, const char* title, int w, int h,
         window_create_params lparam = { 0 };
         lparam.user_data = user_data;
         lparam.window_proc = window_proc;
-        hwnd = CreateWindowA(class_name, title, style, CW_USEDEFAULT, CW_USEDEFAULT, window_w, window_h, 0, 0, GetModuleHandleA(0), &lparam);
+        HWND hwnd = CreateWindowA(class_name, title, style, CW_USEDEFAULT, CW_USEDEFAULT, window_w, window_h, 0, 0, GetModuleHandleA(0), &lparam);
+        result = (hwnd != 0);
+        *out_hwnd = hwnd;
     }
-
-    return hwnd;
+    return result;
 }

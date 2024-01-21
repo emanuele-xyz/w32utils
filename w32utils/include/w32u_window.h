@@ -22,7 +22,7 @@ ATOM w32u_register_window_class(const char* class_name);
 
 /*
     Create a window.
-    If the function succeeds, the return value is a handle to the new window.
+    If the function succeeds, the return value is 1.
     If the function fails, the return value is 0.
 */
-HWND w32u_create_window(const char* class_name, const char* title, int w, int h, DWORD style, WNDPROC window_proc, void* user_data);
+int w32u_create_window(const char* class_name, const char* title, int w, int h, DWORD style, WNDPROC window_proc, void* user_data, HWND* out_hwnd);
