@@ -81,11 +81,11 @@ int main(void)
     int input_idx = 0;
 
     BOOL is_dpi_aware = w32u_make_dpi_aware();
-    if (!is_dpi_aware) w32u_show_error_popup("Failed to set DPI awareness");
+    w32u_assert(is_dpi_aware);
 
     const char* class_name = "my_window_class_name";
     ATOM class_registered = w32u_register_window_class(class_name);
-    if (!class_registered) w32u_show_error_popup("Failed to register window class");
+    w32u_assert(class_registered);
 
     int is_running = 1;
     window_data window_data = { 0 };
@@ -93,7 +93,7 @@ int main(void)
     window_data.input_state = &input_buf[curr_input(input_idx)];
 
     HWND window = w32u_create_window(class_name, "Window", 1280, 720, WS_OVERLAPPEDWINDOW, window_proc, &window_data);
-    if (!window) w32u_show_error_popup("Failed create window");
+    w32u_assert(window);
 
     while (is_running)
     {

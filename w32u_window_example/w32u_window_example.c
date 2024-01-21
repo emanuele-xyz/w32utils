@@ -28,15 +28,15 @@ LRESULT window_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 int main(void)
 {
     BOOL is_dpi_aware = w32u_make_dpi_aware();
-    if (!is_dpi_aware) w32u_show_error_popup("Failed to set DPI awareness");
+    w32u_assert(is_dpi_aware);
 
     const char* class_name = "my_window_class_name";
     ATOM class_registered = w32u_register_window_class(class_name);
-    if (!class_registered) w32u_show_error_popup("Failed to register window class");
+    w32u_assert(class_registered);
 
     int is_running = 1;
     HWND window = w32u_create_window(class_name, "Window", 1280, 720, WS_OVERLAPPEDWINDOW, window_proc, &is_running);
-    if (!window) w32u_show_error_popup("Failed create window");
+    w32u_assert(window);
 
     while (is_running)
     {
