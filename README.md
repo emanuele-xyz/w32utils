@@ -4,6 +4,7 @@ w32utils is a collection of Win32 boilerplate code and useful utilities to simpl
 
 ## Features
 
+- `w32u_macros.h`: Collection of useful macros.
 - `w32u_log.h`: Utility for simple logging to a file and/or to the console and/or to the debug output.
 - `w32u_window.h`: Utility for creating windows.
 - `w32u_input_state.h`: Utility for storing user input.
