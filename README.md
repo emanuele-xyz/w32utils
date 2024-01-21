@@ -32,3 +32,6 @@ This library is *Windows* only.
 
 I often find myself using the Win32 API when I work on my hobby game programming projects.
 I intend to put in this library the Win32 code that can be factored out from these projects for better reusability.
+
+## TODOs
+- [ ] Add support for unicode character set.
