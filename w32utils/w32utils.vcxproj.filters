@@ -30,6 +30,9 @@
     <ClInclude Include="include\w32u_input_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\w32u_macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\w32u_log.c">

@@ -4,3 +4,4 @@
 #include <w32u_log.h>
 #include <w32u_window.h>
 #include <w32u_input_state.h>
+#include <w32u_macros.h>
